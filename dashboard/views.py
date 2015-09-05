@@ -136,7 +136,8 @@ def barcode(request, default_width=170):
     data['current_barcode'] = get_barcode_data(width, BARCODE_HEIGHT,
             current_activities, current_assessments, user)
 
-    return render(request, 'dashboard/barcodes.svg', data)
+    return render(request, 'dashboard/barcodes.svg', data,
+            content_type='image/svg+xml')
 
 ## Background processes
 def cache_activities(request):
