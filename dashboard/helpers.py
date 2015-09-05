@@ -31,3 +31,17 @@ def get_barcode_data(width, height, activities, assessments, user):
         data['people'][i] *= width
         data['people'][i] = int(data['people'][i])
     return data
+
+def generate_barcode_url(user, course):
+    from hashlib import md5
+    from django.conf import settings
+    from time import time
+    from urllib import quote, urlencode
+    from django.core.urlresolvers import reverse
+    timestamp = str(int(time()))
+    hash_contents = (user, quote(course,''),
+            timestamp, settings.AUTHENTICATION_SECRET)
+    hash_string = md5(",".join(hash_contents)).hexdigest().upper()
+    querydict = {'paramlist':"user,course,time,pw", 'hash':hash_string,
+            'user':user, 'course': course, 'time': timestamp}
+    return reverse('barcode')+"?"+urlencode(querydict)
