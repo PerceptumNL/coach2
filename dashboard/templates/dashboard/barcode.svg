@@ -1,4 +1,4 @@
-<rect x="0", y="3" width="100%" height="{{d.height|add:"-6"}}" stroke-width="1" stroke="#eeeeee" fill="#eeeeee" />
+<rect x="0" y="3" width="100%" height="{{d.height|add:"-6"}}" stroke-width="1" stroke="#eeeeee" fill="#eeeeee" />
 {% for p in d.people %}
   <line x1="{{ p }}" y1="5" x2="{{ p }}" y2="{{d.height|add:"-5"}}"
     style="stroke:rgb(0,0,0);stroke-width:1.000000;stroke-opacity:0.100000" />
